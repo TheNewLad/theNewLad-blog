@@ -1,0 +1,119 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import HorizontalCard from "../components/HorizontalCard.astro";
+import { getCollection } from "astro:content";
+import createSlug from "../lib/createSlug";
+
+const lastPosts = (await getCollection("blog"))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3);
+
+const lastDevProjects = (
+  await getCollection("projects", ({ data }) => data.type === "dev")
+)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3);
+
+const lastHobbyProjects = (
+  await getCollection("projects", ({ data }) => data.type === "hobby")
+)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3);
+---
+
+<BaseLayout sideBarActiveItemID="home">
+  <section class="mt-5 pb-12">
+    <header>
+      <h2 class="py-1 text-xl">Howdy! 🤠</h2>
+      <h1 class="text-5xl font-bold">I'm Karim</h1>
+      <h3 class="py-3 text-3xl font-bold">
+        Software Engineer and [<span
+          class="tooltip tooltip-bottom"
+          data-tip="Developer">D</span
+        >|<span class="tooltip tooltip-bottom" data-tip="Life">L</span>|<span
+          class="tooltip tooltip-bottom"
+          data-tip="User">U</span
+        >]<span class="tooltip tooltip-bottom" data-tip="Experience">X</span> Improver
+      </h3>
+    </header>
+    <article class="py-2">
+      <p class="text-lg">
+        During the day, I have a passion for improving developer and user
+        experiences using React, Typescript, and MUI at my day job. At night, I
+        have a passion for improving my personal experience and those around me
+        by creating tools and devices in CAD and 3D printing. I always seek new
+        opportunities to learn, grow, and improve the world around me.
+      </p>
+    </article>
+    <footer class="mt-8">
+      <a
+        class="btn btn-outline"
+        href="https://www.linkedin.com/in/karim-dn/"
+        target="_blank">Let's connect!</a
+      >
+    </footer>
+  </section>
+
+  <section class="mt-5 pb-12">
+    <h2 class="mb-2 w-full text-3xl font-bold">
+      Latest Dev Projects {"👨🏾‍💻"}
+    </h2>
+    {
+      lastDevProjects.map((post, index) => (
+        <>
+          <HorizontalCard
+            title={post.data.title}
+            img={post.data.heroImage}
+            desc={post.data.description}
+            url={"/projects/" + createSlug(post.data.title, post.slug)}
+            target="_self"
+            badge={post.data.badge}
+          />
+          {index !== lastPosts.length - 1 && <div class="divider my-0" />}
+        </>
+      ))
+    }
+  </section>
+
+  <section class="mt-5 pb-12">
+    <h2 class="mb-2 w-full text-3xl font-bold">
+      Latest Hobby Projects {"💡"}
+    </h2>
+    {
+      lastHobbyProjects.map((post, index) => (
+        <>
+          <HorizontalCard
+            title={post.data.title}
+            img={post.data.heroImage}
+            desc={post.data.description}
+            url={"/projects/" + createSlug(post.data.title, post.slug)}
+            target="_self"
+            badge={post.data.badge}
+          />
+          {index !== lastPosts.length - 1 && <div class="divider my-0" />}
+        </>
+      ))
+    }
+  </section>
+
+  <section class="mt-5 pb-12">
+    <h2 class="mb-5 mt-10 w-full text-3xl font-bold">
+      Latest Blog Posts {"⌨️"}️
+    </h2>
+    {
+      lastPosts.map((post, index) => (
+        <>
+          <HorizontalCard
+            title={post.data.title}
+            img={post.data.heroImage}
+            desc={post.data.description}
+            url={"/blog/" + createSlug(post.data.title, post.slug)}
+            target="_self"
+            badge={post.data.badge}
+          />
+          {index !== lastPosts.length - 1 && <div class="divider my-0" />}
+        </>
+      ))
+    }
+  </section>
+</BaseLayout>
