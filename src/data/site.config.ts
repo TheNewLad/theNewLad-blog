@@ -9,7 +9,7 @@ interface SiteConfig {
 
 export const siteConfig: SiteConfig = {
 	author: 'Karim DN',
-	title: 'Notions of theNewLad',
+	title: 'Notions of TheNewLad',
 	description: 'Sharing my thoughts and experiences in my personal and professional journey.',
 	lang: 'en-US',
 	ogLocale: 'en_US',
