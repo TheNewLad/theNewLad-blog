@@ -8,7 +8,7 @@ interface SiteConfig {
 }
 
 export const siteConfig: SiteConfig = {
-	author: 'Karim DN',
+	author: 'Karim Dallas-Newell',
 	title: 'Notions of TheNewLad',
 	description: 'Sharing my thoughts and experiences in my personal and professional journey.',
 	lang: 'en-US',
