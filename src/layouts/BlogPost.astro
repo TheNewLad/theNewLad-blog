@@ -24,23 +24,23 @@ const articleDate = pubDate.toISOString()
 	image={heroImage?.src}
 	articleDate={articleDate}
 >
-	<article class='min-w-full md:py-4 sm:max-w-none md:max-w-none'>
-		<header class='mb-3 flex flex-col justify-center items-center gap-6'>
+	<article class='min-w-full sm:max-w-none md:max-w-none md:py-4'>
+		<header class='mb-3 flex flex-col items-center justify-center gap-6'>
 			<div class='flex flex-col gap-2'>
 				<div class='flex items-center justify-center gap-x-1'>
 					<p class='text-center text-sm text-opacity-50'>
 						Published <FormattedDate date={pubDate} />
 					</p>
-					<p class='text-center text-sm text-opacity-50 font-bold'>
+					<p class='text-center text-sm font-bold text-opacity-50'>
 						- {readTime}
 					</p>
 				</div>
-				<h1 class='title text-center text-4xl md:text-6xl md:pb-2.5 font-semibold opacity-0'>
+				<h1 class='title text-center text-4xl font-semibold opacity-0 md:pb-2.5 md:text-6xl'>
 					{title}
 				</h1>
 			</div>
 
-			<div class='flex flex-wrap justify-center items-center gap-2 gap-y-4 md:gap-5'>
+			<div class='flex flex-wrap items-center justify-center gap-2 gap-y-4 md:gap-5'>
 				{tags.map((tag) => <Tag>{tag}</Tag>)}
 			</div>
 		</header>
@@ -55,14 +55,14 @@ const articleDate = pubDate.toISOString()
 						quality={100}
 						format='jpg'
 						loading='eager'
-						class='rounded-md w-full max-h-[300px]  md:max-h-[500px] my-8 object-cover opacity-0 transition-opacity duration-700 ease-in'
+						class='my-8 max-h-[300px] w-full  rounded-md object-cover opacity-0 transition-opacity duration-700 ease-in md:max-h-[500px]'
 						alt={`img of ${title}`}
 					/>
 				)
 			}
 			<div
 				style='backdrop-filter: blur(25px) saturate(180%);'
-				class='placeholder absolute inset-0 blur rounded-md transition-opacity duration-700 ease-out border-2 border-neutral-200 bg-gray-200 dark:border-neutral-900 dark:bg-zinc-900 bg-opacity-90'
+				class='placeholder absolute inset-0 rounded-md border-2 border-neutral-200 bg-gray-200 bg-opacity-90 blur transition-opacity duration-700 ease-out dark:border-neutral-900 dark:bg-zinc-900'
 			>
 			</div>
 		</div>
