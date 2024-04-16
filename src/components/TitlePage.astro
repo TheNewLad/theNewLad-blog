@@ -1,14 +1,14 @@
 ---
-import Title from './Title.astro'
-import Shape from './icons/Shape.astro'
+import Title from "./Title.astro";
+import Shape from "./icons/Shape.astro";
 type Props = {
-  title: string
-}
+  title: string;
+};
 
-const { title } = Astro.props
+const { title } = Astro.props;
 ---
 
-<div class='title flex items-center justify-start gap-2'>
+<div class="title flex items-center justify-start gap-2">
   <Shape />
   <Title>{title}</Title>
 </div>

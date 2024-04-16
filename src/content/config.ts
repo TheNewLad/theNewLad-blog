@@ -1,5 +1,5 @@
-import { defineCollection, z } from 'astro:content'
-import { CATEGORIES } from '@/data/categories'
+import { defineCollection, z } from "astro:content";
+import { CATEGORIES } from "@/data/categories";
 
 const blog = defineCollection({
   // Type-check frontmatter using a schema
@@ -15,8 +15,8 @@ const blog = defineCollection({
       heroImage: image(),
       category: z.enum(CATEGORIES),
       tags: z.array(z.string()),
-      draft: z.boolean().default(false)
-    })
-})
+      draft: z.boolean().default(false),
+    }),
+});
 
-export const collections = { blog }
+export const collections = { blog };

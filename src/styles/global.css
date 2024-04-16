@@ -13,22 +13,22 @@
 
   @font-face {
     font-family: Manrope;
-    src: url(../assets/fonts/Manrope-SemiBold.woff2) format('woff2');
+    src: url(../assets/fonts/Manrope-SemiBold.woff2) format("woff2");
   }
 
   @font-face {
     font-family: Manrope;
-    src: url(../assets/fonts/Manrope-Medium.woff2) format('woff2');
+    src: url(../assets/fonts/Manrope-Medium.woff2) format("woff2");
   }
 
   @font-face {
     font-family: Manrope;
-    src: url(../assets/fonts/Manrope-Light.woff2) format('woff2');
+    src: url(../assets/fonts/Manrope-Light.woff2) format("woff2");
   }
 
   @font-face {
     font-family: Manrope;
-    src: url(../assets/fonts/Manrope-Regular.woff2) format('woff2');
+    src: url(../assets/fonts/Manrope-Regular.woff2) format("woff2");
   }
 
   /* prose styles here */
