@@ -6,25 +6,25 @@ import { remarkReadingTime } from './src/utils/readTime.ts'
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://thenewlad.com/',
-	markdown: {
-		remarkPlugins: [remarkReadingTime],
-		drafts: true,
-		shikiConfig: {
-			theme: 'material-theme-palenight',
-			wrap: true
-		}
-	},
-	integrations: [
-		mdx({
-			syntaxHighlight: 'shiki',
-			shikiConfig: {
-				theme: 'material-theme-palenight',
-				wrap: true
-			},
-			drafts: true
-		}),
-		sitemap(),
-		tailwind()
-	]
+  site: 'https://thenewlad.com/',
+  markdown: {
+    remarkPlugins: [remarkReadingTime],
+    drafts: true,
+    shikiConfig: {
+      theme: 'material-theme-palenight',
+      wrap: true
+    }
+  },
+  integrations: [
+    mdx({
+      syntaxHighlight: 'shiki',
+      shikiConfig: {
+        theme: 'material-theme-palenight',
+        wrap: true
+      },
+      drafts: true
+    }),
+    sitemap(),
+    tailwind()
+  ]
 })

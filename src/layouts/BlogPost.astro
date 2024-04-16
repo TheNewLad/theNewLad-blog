@@ -7,9 +7,9 @@ import type { MarkdownHeading } from 'astro'
 import { Image } from 'astro:assets'
 
 type Props = {
-	data: CollectionEntry<'blog'>['data']
-	headings: MarkdownHeading[]
-	readTime: string
+  data: CollectionEntry<'blog'>['data']
+  headings: MarkdownHeading[]
+  readTime: string
 }
 
 const { data, readTime, headings } = Astro.props
@@ -19,130 +19,130 @@ const articleDate = pubDate.toISOString()
 ---
 
 <BaseLayout
-	title={title}
-	description={description}
-	image={heroImage?.src}
-	articleDate={articleDate}
+  title={title}
+  description={description}
+  image={heroImage?.src}
+  articleDate={articleDate}
 >
-	<article class='min-w-full sm:max-w-none md:max-w-none md:py-4'>
-		<header class='mb-3 flex flex-col items-center justify-center gap-6'>
-			<div class='flex flex-col gap-2'>
-				<div class='flex items-center justify-center gap-x-1'>
-					<p class='text-center text-sm text-opacity-50'>
-						Published <FormattedDate date={pubDate} />
-					</p>
-					<p class='text-center text-sm font-bold text-opacity-50'>
-						- {readTime}
-					</p>
-				</div>
-				<h1 class='title text-center text-4xl font-semibold opacity-0 md:pb-2.5 md:text-6xl'>
-					{title}
-				</h1>
-			</div>
+  <article class='min-w-full sm:max-w-none md:max-w-none md:py-4'>
+    <header class='mb-3 flex flex-col items-center justify-center gap-6'>
+      <div class='flex flex-col gap-2'>
+        <div class='flex items-center justify-center gap-x-1'>
+          <p class='text-center text-sm text-opacity-50'>
+            Published <FormattedDate date={pubDate} />
+          </p>
+          <p class='text-center text-sm font-bold text-opacity-50'>
+            - {readTime}
+          </p>
+        </div>
+        <h1 class='title text-center text-4xl font-semibold opacity-0 md:pb-2.5 md:text-6xl'>
+          {title}
+        </h1>
+      </div>
 
-			<div class='flex flex-wrap items-center justify-center gap-2 gap-y-4 md:gap-5'>
-				{tags.map((tag) => <Tag>{tag}</Tag>)}
-			</div>
-		</header>
+      <div class='flex flex-wrap items-center justify-center gap-2 gap-y-4 md:gap-5'>
+        {tags.map((tag) => <Tag>{tag}</Tag>)}
+      </div>
+    </header>
 
-		<div class='relative'>
-			{
-				heroImage && (
-					<Image
-						src={heroImage}
-						width={1000}
-						height={500}
-						quality={100}
-						format='jpg'
-						loading='eager'
-						class='my-8 max-h-[300px] w-full  rounded-md object-cover opacity-0 transition-opacity duration-700 ease-in md:max-h-[500px]'
-						alt={`img of ${title}`}
-					/>
-				)
-			}
-			<div
-				style='backdrop-filter: blur(25px) saturate(180%);'
-				class='placeholder absolute inset-0 rounded-md border-2 border-neutral-200 bg-gray-200 bg-opacity-90 blur transition-opacity duration-700 ease-out dark:border-neutral-900 dark:bg-zinc-900'
-			>
-			</div>
-		</div>
+    <div class='relative'>
+      {
+        heroImage && (
+          <Image
+            src={heroImage}
+            width={1000}
+            height={500}
+            quality={100}
+            format='jpg'
+            loading='eager'
+            class='my-8 max-h-[300px] w-full  rounded-md object-cover opacity-0 transition-opacity duration-700 ease-in md:max-h-[500px]'
+            alt={`img of ${title}`}
+          />
+        )
+      }
+      <div
+        style='backdrop-filter: blur(25px) saturate(180%);'
+        class='placeholder absolute inset-0 rounded-md border-2 border-neutral-200 bg-gray-200 bg-opacity-90 blur transition-opacity duration-700 ease-out dark:border-neutral-900 dark:bg-zinc-900'
+      >
+      </div>
+    </div>
 
-		<hr />
+    <hr />
 
-		<div>
-			<slot />
-		</div>
-	</article>
+    <div>
+      <slot />
+    </div>
+  </article>
 </BaseLayout>
 
 <script is:inline>
-	const img = document.querySelector('img')
-	const placeholder = document.querySelector('.placeholder')
+  const img = document.querySelector('img')
+  const placeholder = document.querySelector('.placeholder')
 
-	img?.addEventListener('load', () => {
-		img.classList.add('opacity-100')
-		placeholder.classList.add('opacity-0')
-	})
+  img?.addEventListener('load', () => {
+    img.classList.add('opacity-100')
+    placeholder.classList.add('opacity-0')
+  })
 </script>
 
 <script>
-	import { animate } from 'motion'
+  import { animate } from 'motion'
 
-	animate(
-		'.title',
-		{
-			opacity: [0, 1],
-			clipPath: ['polygon(0 0, 0 0, 0 100%, 0% 100%)', 'polygon(100% 0, 0 0, 0 100%, 100% 100%)']
-		},
-		{ duration: 1, easing: 'ease-in-out' }
-	)
+  animate(
+    '.title',
+    {
+      opacity: [0, 1],
+      clipPath: ['polygon(0 0, 0 0, 0 100%, 0% 100%)', 'polygon(100% 0, 0 0, 0 100%, 100% 100%)']
+    },
+    { duration: 1, easing: 'ease-in-out' }
+  )
 </script>
 
 <script>
-	function handleIntersection(
-		entries: IntersectionObserverEntry[],
-		observer: IntersectionObserver
-	) {
-		entries.forEach((entry) => {
-			const index = document.querySelector(`aside a[href="#${entry.target.id}"]`)
+  function handleIntersection(
+    entries: IntersectionObserverEntry[],
+    observer: IntersectionObserver
+  ) {
+    entries.forEach((entry) => {
+      const index = document.querySelector(`aside a[href="#${entry.target.id}"]`)
 
-			if (entry.isIntersecting) {
-				index?.classList.remove('bg-slate-200', 'dark:bg-slate-800') // remove bg
-				index?.classList.add(
-					'bg-indigo-600',
-					'dark:bg-indigo-700',
-					'text-white',
-					'font-bold',
-					'transition-colors',
-					'duration-200'
-				)
-			} else {
-				index?.classList.add('bg-slate-200', 'dark:bg-slate-800') // add bg
-				index?.classList.remove(
-					'bg-indigo-600',
-					'dark:bg-indigo-700',
-					'text-white',
-					'font-bold',
-					'transition-colors',
-					'duration-200'
-				)
-			}
-		})
-	}
+      if (entry.isIntersecting) {
+        index?.classList.remove('bg-slate-200', 'dark:bg-slate-800') // remove bg
+        index?.classList.add(
+          'bg-indigo-600',
+          'dark:bg-indigo-700',
+          'text-white',
+          'font-bold',
+          'transition-colors',
+          'duration-200'
+        )
+      } else {
+        index?.classList.add('bg-slate-200', 'dark:bg-slate-800') // add bg
+        index?.classList.remove(
+          'bg-indigo-600',
+          'dark:bg-indigo-700',
+          'text-white',
+          'font-bold',
+          'transition-colors',
+          'duration-200'
+        )
+      }
+    })
+  }
 
-	const headings = document.querySelectorAll(
-		'div.prose h1, div.prose h2, div.prose h3, div.prose h4, div.prose h5, div.prose h6'
-	)
+  const headings = document.querySelectorAll(
+    'div.prose h1, div.prose h2, div.prose h3, div.prose h4, div.prose h5, div.prose h6'
+  )
 
-	const options = {
-		root: null,
-		rootMargin: ' 15% 0px 0% 0px ',
-		threshold: 1
-	}
+  const options = {
+    root: null,
+    rootMargin: ' 15% 0px 0% 0px ',
+    threshold: 1
+  }
 
-	const observer = new IntersectionObserver(handleIntersection, options)
+  const observer = new IntersectionObserver(handleIntersection, options)
 
-	headings.forEach((heading) => {
-		observer.observe(heading)
-	})
+  headings.forEach((heading) => {
+    observer.observe(heading)
+  })
 </script>
