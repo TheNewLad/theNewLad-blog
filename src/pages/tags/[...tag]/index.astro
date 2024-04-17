@@ -3,6 +3,7 @@ import BaseLayout from "@/layouts/BaseLayout";
 import ListPosts from "@/components/ListPosts";
 import TitlePage from "@/components/TitlePage";
 import { getTags, getPostByTag } from "@/utils";
+import { titleCase } from "title-case";
 
 export async function getStaticPaths() {
   const tags = await getTags();
@@ -14,11 +15,12 @@ export async function getStaticPaths() {
 }
 
 const { tag } = Astro.props;
+const tagTitle = titleCase(tag);
 
 const posts = await getPostByTag(tag);
 ---
 
-<BaseLayout title={tag}>
-  <TitlePage title={tag} />
+<BaseLayout title={tagTitle}>
+  <TitlePage title={tagTitle} />
   <ListPosts posts={posts} />
 </BaseLayout>
