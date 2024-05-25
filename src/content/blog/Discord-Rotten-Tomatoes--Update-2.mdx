@@ -1,0 +1,26 @@
+---
+heroImage: /src/assets/images/DiscordRottenTomatoes.jpg
+category: Personal
+description: User authorization is hard.
+pubDate: 2024-05-24T05:00:00.000Z
+tags:
+  - professional-development
+  - discord-rotten-tomatoes
+title: 'Discord Rotten Tomatoes — Update #2'
+---
+
+It’s been almost three weeks since my last post, and I’m thrilled to share that significant progress has been made. However, I know this is just the beginning, and there’s much more to come.
+
+In my pursuit of keeping this project super simple (KISS), I napkined out—really just a super rough roadmap—what I wanted for the project. I didn’t want to get in the way of myself, so I figured I’d figure out the method to the madness as I learned more and built the project. I created a project database in Notion to keep track of my thoughts as they came without derailing the project so much that I got nothing done.
+
+My plan for this project to deliver the MVP (Minimal Viable Product) was a few acceptance criteria. The user needs to be able to log in through Discord, search for movies and TV shows, and rate them. Then, they need to be able to set their review weights and use them to skew others’ ratings so they align with the users.
+
+In these last three weeks, I’ve added Discord OAuth through Supabase. The user can sign in to Discord through Supabase. This allows me to use Discord’s token to check if the user is on my Discord server and authorize them in the app. And that’s where I’ve stopped.
+
+Currently, I’m on the fence about how to handle authentication. I like Supabase, but after checking out Clerk, my curiosity was peaked. I think it’s because Clerk is for authorization and authorization only, so it seems to have a better user experience since it’s only for user authentication and nothing else like Supabase. My next post might be about me switching to Clerk.
+
+The next step that got me to look at Clerk again was how to authenticate every request on my server. You can use my API to interact with the data without authorization. This is not good since anyone can make requests assuming they know the endpoints and have a field day with my app’s data. So now I’m learning more about adequately authorizing users and ensuring that every request that is made should be made, I.e., reading others’ reviews or only being able to update your information and not anyone else’s.
+
+Thanks for reading. I’m sorry for cutting this short. My attention span has run out, and I want to explore my options for authorizing the user.
+
+Until next time. ✌🏾
