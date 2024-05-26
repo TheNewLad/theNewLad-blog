@@ -1,5 +1,7 @@
+import React from "react";
 import { CATEGORIES } from "../src/data/categories.ts";
-import { defineConfig } from "tinacms";
+import {defineConfig, TagsFieldPlugin, wrapFieldsWithMeta} from "tinacms";
+import {Tags} from "./Tags.tsx";
 
 // Your hosting provider likely exposes this as an environment variable
 const branch = process.env.HEAD || process.env.VERCEL_GIT_COMMIT_REF || "main";
@@ -70,7 +72,7 @@ export default defineConfig({
             description: "Tags for this post",
             list: true,
             ui: {
-              component: "tags",
+              component: Tags,
             },
           },
           {
