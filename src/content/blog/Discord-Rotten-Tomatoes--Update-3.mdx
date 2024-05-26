@@ -1,0 +1,23 @@
+---
+heroImage: /src/assets/images/DiscordRottenTomatoes.jpg
+category: Professional
+description: I'm making progress with Clerk.
+pubDate: 2024-05-26T05:00:00.000Z
+tags:
+  - professional-development
+  - discord-rotten-tomatoes
+title: 'Discord Rotten Tomatoes — Update #3'
+---
+
+* It took some getting used to the Clerk documentation since there’s not a clear delineation of what purely React documentation vs NextJS is at some points.
+* I created the user onboarding sequence diagram to help me understand how the app will work with all its dependencies. I created two:
+  * The [first one](https://kroki.io/mermaid/svg/eNqFkD0SAiEMhXtOkc5GL7CFjTY2Np6AYeOaWQ2YgIWnN4vrz6ozVsDjvS_wFM8FOeCafCf-5FzykilQ8pxhdUTpPxRCzm4bM0K8oIxCA5s95ANCUdNIeZZBqWNsgXg-qHcW5Ai-mJGN6I1h2xO4O2SxXFZTM7VUZFHiDtakIUrrqs3s4_l_YFxfEwRzEZ7k2oe7Ap4zHh_8n_guJRww9ECTaiohCl0tbm0M1Qy3PqVXDTsUwzTTT9SgRXq0Rn-Sk6AawCqvsiYMtKe3Z2rl3gDkyLQt) was a rough draft to help me get started. But I saw it needed more granularity regarding the actors in the sequence.
+  * The [second diagram](https://kroki.io/mermaid/svg/eNqNVMGO0zAQvecr5giHKrvAqYeVlu0icULaZU8IkakzbUdN7eBxWgnEvzN2nKRZVZRb5bz35vnNc4V-dmQNrRi3Hg9F0aIPbLhFG-ChIb-fnaxYjPP17Oyjdych_4rJZMPs6Jn88RVqhQHXKFQUWWNxd9czl7BhL2ER-EDQ6Rc4snAQqMqq6CEJq_6WYHZk9tK7heBAiIA3EHaZygLCW0s1sC0S6mzOgLAuzFB5RDa2BE81ezJqITF0TFVG_IJtNbOfLCVM_CyqVnbtODYHGPU0eAk9Ejs1azUXDOxskUGTXOvdkWuSc6AajdxR-YLTaPK3SVf50fnmTxnppcGmWaPZVxdS__b0-On-4euXp-9RXGKGQmBUMk7FJmmemxgaMXjJsfXLHlej2xhyZjtSpG9Ej50uu6WcyoALbk_T4gbpMZMBhsaQSEaPomPgF61IS4Y3rFnOTSmG7XYuWWAT4CVyY1eu36Nr6xjQgQLqD0zN3LnTrHExSuf5F9Xn9H4XnqR1thY4cdjBh5v3_2ylqisEWtxSQY0u7eW_A79mdDIJaOPz4LwgZ9cOfa1JPQcMXTKx0ZLQWfz5iS9jiXRKfj7pStoinrac_H5epRH3U8OchzfJ59sBcS2pdze315KK_yJk67-V88kb) was more clean-cut. I saw how Clerk did their onboarding sequence diagram. It helped me realize that using the Browser as an actor allows me to outline URLs and other interactions the user views, and using a Client actor will enable me to focus on business logic in the React app.
+* I created a [scratch file](https://gist.github.com/TheNewLad/e255166ea7b00518f274a1c4b5795b4b) in Webstorm to help me quickly test the Clerk backend SDK.
+  * I want Clerk to know if a user has been onboarded and is authorized to use the app, i.e., in my Discord server.
+* Also, Clerk’s QuickStart guide made me realize I need react-router to help simplify my components.
+  * I was doing checks to see if a user onboarded in the dashboard/home page
+  * With React Router, I plan on separating the flows into different pages. So if a user has not been onboarded, they can visit or be redirected to the onboarding page where they can set their review weights
+* Using React Router and having to set up the routes manually tempts me to want to pivot to NextJS but my goal is not to make this too abstracted as I want to learn why a tool like NextJS exists. I need some hardships in this learning phase so I know why the drill was created when there is a screwdriver and when I use one or the other.
+
+I wrote this quick update in bullet points once I figured out the onboarding flow I’m going with. It was quick and fast to think it out, and I don’t have to remember the details in a month when I hit a huge milestone. I like this format and see myself using it going forward.
